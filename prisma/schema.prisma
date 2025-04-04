@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-    provider = "mysql"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
@@ -20,7 +20,7 @@ model User {
 model Telephone {
     id        Int    @id @default(autoincrement())
     number    Int
-    area_code Int    @db.TinyInt
+    area_code Int    @db.SmallInt
     userId    String
     User      User   @relation(fields: [userId], references: [id])
 }
