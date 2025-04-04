@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { EncryptionUtils } from 'src/app/Utils/EncryptionUtils';
 import { LoginDataDto } from 'src/domain/Dtos/LoginData';
@@ -15,11 +19,17 @@ export class LoginUseCase implements LoginRepository {
   ) {}
 
   async singIn(singInRequest: SingInValidationDto): Promise<LoginDataDto> {
+    if (!singInRequest || !singInRequest.email || !singInRequest.password) {
+      throw new BadRequestException('É Nessario enviar a Senha e Email');
+    }
     const user = await this.getUserUseCase.execute({
       email: singInRequest.email,
     });
     if (
-      !(await EncryptionUtils.decryption(singInRequest.password, user.password))
+      !(await EncryptionUtils.decryption(
+        singInRequest?.password,
+        user?.password,
+      ))
     ) {
       throw new UnauthorizedException('Acesso Negado');
     }

@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
-    console.log(request);
     if (!token) {
       throw new UnauthorizedException('USUARIO NÃO AUTORIZADO');
     }
@@ -26,7 +25,6 @@ export class AuthGuard implements CanActivate {
           secret: process.env.JWT_KEY,
         },
       );
-      console.log(payload);
       request.user = payload;
     } catch {
       throw new UnauthorizedException('USUARIO NÃO AUTORIZADO');

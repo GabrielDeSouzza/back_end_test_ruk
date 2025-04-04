@@ -1,6 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { EncryptionUtils } from 'src/app/Utils/EncryptionUtils';
-import { TelephoneEntity } from 'src/domain/Entities/Telephones/TelephonesEntity';
 import { CreateUserDto } from 'src/app/UseCases/UserUseCase/Dto/CreateUserDto';
 import { UserEntity } from 'src/domain/Entities/User/UserEntity';
 import { UserRepository } from 'src/domain/Repositories/UserRepository';
@@ -27,10 +26,10 @@ export class CreateUserUseCase {
       name: user.name,
       password: await EncryptionUtils.encryption(user.password),
       telephones: user.telephones.map((telephone) => {
-        return new TelephoneEntity({
-          areaCode: telephone.areaCode,
+        return {
+          area_code: telephone.areaCode,
           number: telephone.number,
-        });
+        };
       }),
     });
     const userCreated = this.userRepository.createUser(userEntity);

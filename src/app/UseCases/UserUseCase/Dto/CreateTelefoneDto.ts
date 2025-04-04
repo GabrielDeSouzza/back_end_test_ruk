@@ -11,7 +11,7 @@ export abstract class CreateTelephoneDto {
   @IsNumber()
   @IsNotEmpty()
   @Validate(IsPhoneNumberValid, {
-    message: 'O código de área deve ter exatamente 2 dígitos',
+    message: 'O CÓDIGO de área deve ter exatamente 2 dígitos',
   })
   areaCode: number;
 }

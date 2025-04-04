@@ -7,12 +7,12 @@ Content-Type: application/json
 
 {
  "name": "Gabriel",
- "email": "gabrielemail4321@gmail.com",
+ "email": "gabrielemail43211@gmail.com",
  "password": "123456",
  "telephones": [
    {
      "number": 980847827,
-     "areaCode": 11
+     "areaCode": 111
    }
  ]
 }

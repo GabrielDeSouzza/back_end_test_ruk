@@ -1,12 +1,9 @@
-import {
-  TelephoneEntity,
-  TelephoneProps,
-} from 'src/domain/Entities/Telephones/TelephonesEntity';
+import { TelephoneProps } from 'src/domain/Entities/User/UserEntity';
 
 export abstract class GetUserControllerResponseDto {
   id: string;
   name: string;
-  telephones: TelephoneEntity[];
+  telephones: TelephoneProps[];
   created_at: Date;
   modifed_at: Date;
 }

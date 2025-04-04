@@ -1,12 +1,16 @@
 import { randomUUID } from 'crypto';
-import { TelephoneEntity } from '../Telephones/TelephonesEntity';
+
+export abstract class TelephoneProps {
+  number: number;
+  area_code: number;
+}
 
 export abstract class UserEntityProps {
   id?: string;
   name: string;
   email: string;
   password: string;
-  telephones: TelephoneEntity[];
+  telephones: TelephoneProps[];
   createdAt: Date;
   modifiedAt: Date;
 }
@@ -51,11 +55,11 @@ export class UserEntity {
     this.props.password = value;
   }
 
-  public get telephones(): TelephoneEntity[] {
+  public get telephones(): TelephoneProps[] {
     return this.props.telephones;
   }
 
-  public set telephones(value: TelephoneEntity[]) {
+  public set telephones(value: TelephoneProps[]) {
     this.props.telephones = value;
   }
 

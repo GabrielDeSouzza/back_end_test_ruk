@@ -3,7 +3,6 @@ import {
   Telephone as TelephonePrisma,
   Prisma,
 } from '@prisma/client';
-import { TelephoneEntity } from 'src/domain/Entities/Telephones/TelephonesEntity';
 import { UserEntity } from 'src/domain/Entities/User/UserEntity';
 
 export class UserPrismaDto {
@@ -19,11 +18,7 @@ export class UserPrismaDto {
       name: data.name,
       password: data.password,
       telephones: telephones.map((telephone) => {
-        return new TelephoneEntity({
-          areaCode: telephone.area_code,
-          number: telephone.number,
-          userId: telephone.userId,
-        });
+        return { area_code: telephone.area_code, number: telephone.number };
       }),
     });
     return userEntity;
@@ -40,7 +35,7 @@ export class UserPrismaDto {
           skipDuplicates: true,
           data: data.telephones.map((telephone) => {
             return {
-              area_code: telephone.areaCode,
+              area_code: telephone.area_code,
               number: telephone.number,
             };
           }),
