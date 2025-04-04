@@ -1,0 +1,30 @@
+@apiUrl = http://localhost:3000
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhYnJpZWxlbWFpbDQzMjFAZ21haWwuY29tIiwiaWQiOiIwOWY3ZTZiMC1lYTQ4LTRhMjMtOTlkMy1mODFhMzg0YTc4YTkiLCJpYXQiOjE3NDM3MjU3MTMsImV4cCI6MTc0MzgxMjExM30.cEGo0554Bnle3M-w_fktp-CSFSxT1YlyPlp02Vd8mSQ
+
+POST  {{apiUrl}}/auth/singUp
+Content-Type: application/json
+
+
+{
+ "name": "Gabriel",
+ "email": "gabrielemail4321@gmail.com",
+ "password": "123456",
+ "telephones": [
+   {
+     "number": 980847827,
+     "areaCode": 11
+   }
+ ]
+}
+###
+POST  {{apiUrl}}/auth/singIn
+Content-Type: application/json
+
+{
+  "email":"gabrielemail4321@gmail.com",
+  "password": "123456"
+}
+###
+GET   {{apiUrl}}/auth/profile
+Content-Type: application/json
+Authorization: {{token}}
