@@ -5,7 +5,6 @@ import { JwtService } from '@nestjs/jwt';
 import { BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { EncryptionUtils } from 'src/app/Utils/EncryptionUtils';
 import { SingInValidationDto } from 'src/app/UseCases/LoginUseCase/Dto/SingInDto';
-import { LoginDataDto } from 'src/domain/Dtos/LoginData';
 import { UserEntity } from 'src/domain/Entities/User/UserEntity';
 import { UserRepository } from 'src/domain/Repositories/UserRepository';
 

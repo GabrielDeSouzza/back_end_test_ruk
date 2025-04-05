@@ -3,7 +3,6 @@ import {
   Controller,
   Get,
   Post,
-  Req,
   Request,
   UseGuards,
 } from '@nestjs/common';
@@ -13,7 +12,6 @@ import { CreateUserResponse } from './dto/CreateUserResponse';
 import { LoginDataDto } from 'src/domain/Dtos/LoginData';
 import { SingInDto } from 'src/domain/Dtos/SinginData';
 import { LoginUseCase } from 'src/app/UseCases/LoginUseCase/LoginUseCase';
-import { PayloadTokenDto } from 'src/domain/Dtos/PayloadLoginDto';
 import { GetUserUseCase } from 'src/app/UseCases/UserUseCase/GetUseUseCase';
 import { GetUserControllerResponseDto } from './dto/GetUserControllerResponse';
 import { AuthGuard } from 'src/infra/Guard/Guard';
