@@ -63,7 +63,7 @@ describe('LoginUseCase', () => {
 
     getUserUseCaseMock.execute.mockResolvedValue(null);
     await expect(loginUseCase.Sign(request)).rejects.toThrow(
-      new BadRequestException('É Nessario enviar todos Senha e Email'),
+      new BadRequestException('É Nessario enviar a Senha e Email'),
     );
   });
 
