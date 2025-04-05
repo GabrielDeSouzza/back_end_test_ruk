@@ -6,15 +6,15 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { CreateUserUseCase } from 'src/app/UseCases/UserUseCase/CreateUserUseCase';
-import { CreateUserDto } from 'src/app/UseCases/UserUseCase/Dto/CreateUserDto';
+import { CreateUserUseCase } from 'app/UseCases/UserUseCase/CreateUserUseCase';
+import { CreateUserDto } from 'app/UseCases/UserUseCase/Dto/CreateUserDto';
 import { CreateUserResponse } from './dto/CreateUserResponse';
-import { LoginDataDto } from 'src/domain/Dtos/LoginData';
-import { SingInDto } from 'src/domain/Dtos/SinginData';
-import { LoginUseCase } from 'src/app/UseCases/LoginUseCase/LoginUseCase';
-import { GetUserUseCase } from 'src/app/UseCases/UserUseCase/GetUseUseCase';
+import { LoginDataDto } from 'domain/Dtos/LoginData';
+import { LoginUseCase } from 'app/UseCases/LoginUseCase/LoginUseCase';
+import { GetUserUseCase } from 'app/UseCases/UserUseCase/GetUseUseCase';
 import { GetUserControllerResponseDto } from './dto/GetUserControllerResponse';
-import { AuthGuard } from 'src/infra/Guard/Guard';
+import { AuthGuard } from 'infra/Guard/Guard';
+import { SignDto } from 'domain/Dtos/SingInData';
 
 @Controller('auth')
 export class AuthCntroller {
@@ -36,9 +36,9 @@ export class AuthCntroller {
     };
   }
 
-  @Post('singIn')
-  async sinIn(@Body() createUserDto: SingInDto): Promise<LoginDataDto> {
-    const loginData = await this.loginUseCase.singIn(createUserDto);
+  @Post('Sign')
+  async sinIn(@Body() createUserDto: SignDto): Promise<LoginDataDto> {
+    const loginData = await this.loginUseCase.Sign(createUserDto);
     return loginData;
   }
 

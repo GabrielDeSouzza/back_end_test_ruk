@@ -17,7 +17,7 @@ Content-Type: application/json
  ]
 }
 ###
-POST  {{apiUrl}}/auth/singIn
+POST  {{apiUrl}}/auth/Sign
 Content-Type: application/json
 
 {

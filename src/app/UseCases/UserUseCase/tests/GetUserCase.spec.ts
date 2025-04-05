@@ -1,9 +1,9 @@
-import { UserRepository } from 'src/domain/Repositories/UserRepository';
+import { UserRepository } from 'domain/Repositories/UserRepository';
 import { GetUserUseCase } from '../GetUseUseCase';
 import { Test, TestingModule } from '@nestjs/testing';
 import { BadRequestException } from '@nestjs/common';
-import { GetUserDto } from 'src/domain/Entities/User/Dto/GetUserDto';
-import { UserEntity } from 'src/domain/Entities/User/UserEntity';
+import { GetUserDto } from 'domain/Entities/User/Dto/GetUserDto';
+import { UserEntity } from 'domain/Entities/User/UserEntity';
 
 describe('GetUserUseCase', () => {
   let getUserUseCase: GetUserUseCase;

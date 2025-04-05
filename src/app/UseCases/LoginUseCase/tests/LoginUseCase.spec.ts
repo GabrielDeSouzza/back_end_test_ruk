@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LoginUseCase } from 'src/app/UseCases/LoginUseCase/LoginUseCase';
-import { GetUserUseCase } from 'src/app/UseCases/UserUseCase/GetUseUseCase';
+import { LoginUseCase } from 'app/UseCases/LoginUseCase/LoginUseCase';
+import { GetUserUseCase } from 'app/UseCases/UserUseCase/GetUseUseCase';
 import { JwtService } from '@nestjs/jwt';
 import { BadRequestException, UnauthorizedException } from '@nestjs/common';
-import { EncryptionUtils } from 'src/app/Utils/EncryptionUtils';
-import { SingInValidationDto } from 'src/app/UseCases/LoginUseCase/Dto/SingInDto';
-import { UserEntity } from 'src/domain/Entities/User/UserEntity';
-import { UserRepository } from 'src/domain/Repositories/UserRepository';
+import { EncryptionUtils } from 'app/Utils/EncryptionUtils';
+import { UserEntity } from 'domain/Entities/User/UserEntity';
+import { UserRepository } from 'domain/Repositories/UserRepository';
+import { SignValidationDto } from '../Dto/SingInDto';
 
 describe('LoginUseCase', () => {
   let loginUseCase: LoginUseCase;
@@ -56,19 +56,19 @@ describe('LoginUseCase', () => {
   });
 
   it('should throw BadRequestException if password not send', async () => {
-    const request: SingInValidationDto = {
+    const request: SignValidationDto = {
       email: 'test@test.com',
       password: undefined,
     };
 
     getUserUseCaseMock.execute.mockResolvedValue(null);
-    await expect(loginUseCase.singIn(request)).rejects.toThrow(
+    await expect(loginUseCase.Sign(request)).rejects.toThrow(
       new BadRequestException('É Nessario enviar todos Senha e Email'),
     );
   });
 
   it('should throw UnauthorizedException if password is incorrect', async () => {
-    const request: SingInValidationDto = {
+    const request: SignValidationDto = {
       email: 'test@test.com',
       password: 'incorrect password',
     };
@@ -84,13 +84,13 @@ describe('LoginUseCase', () => {
 
     jest.spyOn(EncryptionUtils, 'decryption').mockResolvedValue(false);
     getUserUseCaseMock.execute.mockResolvedValue(user);
-    await expect(loginUseCase.singIn(request)).rejects.toThrow(
+    await expect(loginUseCase.Sign(request)).rejects.toThrow(
       new UnauthorizedException('Acesso Negado'),
     );
   });
 
   it('should return token if password is correct', async () => {
-    const request: SingInValidationDto = {
+    const request: SignValidationDto = {
       email: 'test@test.com',
       password: 'correectPassword',
     };
@@ -108,7 +108,7 @@ describe('LoginUseCase', () => {
     const token = 'some token';
     jwtServiceMock.signAsync.mockResolvedValue(token);
 
-    const result = await loginUseCase.singIn(request);
+    const result = await loginUseCase.Sign(request);
 
     expect(result.token).toBe(token);
     expect(jwtServiceMock.signAsync).toHaveBeenCalledWith(

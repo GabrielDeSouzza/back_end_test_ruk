@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { JwtModule, JwtService } from '@nestjs/jwt';
-import { GetUserUseCase } from 'src/app/UseCases/UserUseCase/GetUseUseCase';
-import { UserRepository } from 'src/domain/Repositories/UserRepository';
-import { PrismaService } from 'src/infra/database/PrismaService/prismaService';
-import { UserPrismaServiceRepository } from 'src/infra/database/PrismaService/UserPrismaServiceRepository/userPrismaServiceRepository';
+import { GetUserUseCase } from 'app/UseCases/UserUseCase/GetUseUseCase';
+import { UserRepository } from 'domain/Repositories/UserRepository';
+import { PrismaService } from 'infra/database/PrismaService/prismaService';
+import { UserPrismaServiceRepository } from 'infra/database/PrismaService/UserPrismaServiceRepository/userPrismaServiceRepository';
 
 @Module({
   imports: [

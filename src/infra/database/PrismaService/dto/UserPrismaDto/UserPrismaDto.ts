@@ -3,7 +3,7 @@ import {
   Telephone as TelephonePrisma,
   Prisma,
 } from '@prisma/client';
-import { UserEntity } from 'src/domain/Entities/User/UserEntity';
+import { UserEntity } from 'domain/Entities/User/UserEntity';
 
 export class UserPrismaDto {
   public static PrismaToEntity(

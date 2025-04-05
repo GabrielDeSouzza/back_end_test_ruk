@@ -1,7 +1,7 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-import { SingInDto } from 'src/domain/Dtos/SinginData';
+import { SignDto } from 'domain/Dtos/SingInData';
 
-export abstract class SingInValidationDto implements SingInDto {
+export abstract class SignValidationDto implements SignDto {
   @IsEmail({}, { message: 'EMAIL INVALIDO' })
   @IsNotEmpty({ message: 'DIGITE UM EMAIL' })
   email: string;

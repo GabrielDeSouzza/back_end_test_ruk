@@ -1,5 +1,5 @@
 import { IsNumber, IsNotEmpty, Validate } from 'class-validator';
-import { IsPhoneNumberValid } from 'src/app/Utils/TelephoneValidation';
+import { IsPhoneNumberValid } from 'app/Utils/TelephoneValidation';
 
 export abstract class CreateTelephoneDto {
   @IsNumber()

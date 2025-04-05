@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UserRepository } from 'src/domain/Repositories/UserRepository';
+import { UserRepository } from 'domain/Repositories/UserRepository';
 import { BadRequestException } from '@nestjs/common';
-import { EncryptionUtils } from 'src/app/Utils/EncryptionUtils';
-import { CreateUserDto } from 'src/app/UseCases/UserUseCase/Dto/CreateUserDto';
-import { UserEntity } from 'src/domain/Entities/User/UserEntity';
+import { EncryptionUtils } from 'app/Utils/EncryptionUtils';
+import { CreateUserDto } from 'app/UseCases/UserUseCase/Dto/CreateUserDto';
+import { UserEntity } from 'domain/Entities/User/UserEntity';
 import { CreateUserUseCase } from '../CreateUserUseCase';
 
 describe('CreateUserUseCase', () => {

@@ -1,6 +1,6 @@
 import { LoginDataDto } from '../Dtos/LoginData';
-import { SingInDto } from '../Dtos/SinginData';
+import { SignDto } from '../Dtos/SingInData';
 
 export abstract class LoginRepository {
-  abstract singIn(singInRequest: SingInDto): Promise<LoginDataDto>;
+  abstract Sign(SignRequest: SignDto): Promise<LoginDataDto>;
 }

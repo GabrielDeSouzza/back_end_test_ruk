@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { EncryptionUtils } from 'src/app/Utils/EncryptionUtils';
-import { CreateUserDto } from 'src/app/UseCases/UserUseCase/Dto/CreateUserDto';
-import { UserEntity } from 'src/domain/Entities/User/UserEntity';
-import { UserRepository } from 'src/domain/Repositories/UserRepository';
+import { EncryptionUtils } from 'app/Utils/EncryptionUtils';
+import { CreateUserDto } from 'app/UseCases/UserUseCase/Dto/CreateUserDto';
+import { UserEntity } from 'domain/Entities/User/UserEntity';
+import { UserRepository } from 'domain/Repositories/UserRepository';
 
 @Injectable()
 export class CreateUserUseCase {

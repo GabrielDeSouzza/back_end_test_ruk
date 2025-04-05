@@ -1,5 +1,5 @@
-import { UserRepository } from 'src/domain/Repositories/UserRepository';
-import { GetUserDto } from 'src/domain/Entities/User/Dto/GetUserDto';
+import { UserRepository } from 'domain/Repositories/UserRepository';
+import { GetUserDto } from 'domain/Entities/User/Dto/GetUserDto';
 import { BadRequestException, Injectable } from '@nestjs/common';
 
 @Injectable()

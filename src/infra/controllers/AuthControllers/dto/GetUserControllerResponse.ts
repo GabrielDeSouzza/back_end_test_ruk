@@ -1,4 +1,4 @@
-import { TelephoneProps } from 'src/domain/Entities/User/UserEntity';
+import { TelephoneProps } from 'domain/Entities/User/UserEntity';
 
 export abstract class GetUserControllerResponseDto {
   id: string;
