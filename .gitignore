@@ -28,4 +28,7 @@ lerna-debug.log*
 *.sublime-workspace
 
 
+
+
+tsconfig.build.tsbuildinfo
 .env
