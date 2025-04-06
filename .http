@@ -1,5 +1,5 @@
 @apiUrl = http://localhost:3000
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhYnJpZWxlbWFpbDQzMjFAZ21haWwuY29tIiwiaWQiOiIwOWY3ZTZiMC1lYTQ4LTRhMjMtOTlkMy1mODFhMzg0YTc4YTkiLCJpYXQiOjE3NDM3MjU3MTMsImV4cCI6MTc0MzgxMjExM30.cEGo0554Bnle3M-w_fktp-CSFSxT1YlyPlp02Vd8mSQ
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhYnJpZWxlbWFpbDQzMjExQGdtYWlsLmNvbSIsImlkIjoiZTZjNjY4YWItNDJkNi00YTgzLTk2NTMtZTgzNjIxZmRmMTgyIiwiaWF0IjoxNzQzOTUyNDcyLCJleHAiOjE3NDQwMzg4NzJ9.gH3NtzWOwOdQ4hL4Pgkv5Dvtd_F9jwIAE6izPN3UeKM
 
 POST  {{apiUrl}}/auth/singUp
 Content-Type: application/json
@@ -12,7 +12,7 @@ Content-Type: application/json
  "telephones": [
    {
      "number": 980847827,
-     "areaCode": 111
+     "areaCode": 11
    }
  ]
 }
@@ -21,7 +21,7 @@ POST  {{apiUrl}}/auth/Sign
 Content-Type: application/json
 
 {
-  "email":"gabrielemail4321@gmail.com",
+  "email":"gabrielemail43211@gmail.com",
   "password": "123456"
 }
 ###

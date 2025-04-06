@@ -2,6 +2,8 @@ import {
   Body,
   Controller,
   Get,
+  HttpCode,
+  HttpStatus,
   Post,
   Request,
   UseGuards,
@@ -37,7 +39,8 @@ export class AuthCntroller {
   }
 
   @Post('Sign')
-  async sinIn(@Body() createUserDto: SignDto): Promise<LoginDataDto> {
+  @HttpCode(HttpStatus.OK)
+  async signIn(@Body() createUserDto: SignDto): Promise<LoginDataDto> {
     const loginData = await this.loginUseCase.Sign(createUserDto);
     return loginData;
   }
@@ -46,10 +49,12 @@ export class AuthCntroller {
   @UseGuards(AuthGuard)
   async profile(@Request() req): Promise<GetUserControllerResponseDto> {
     const user = await this.getUserUseCase.execute(req.user);
+    console.log(user);
     return {
       created_at: user.createdAt,
       id: user.id,
-      modifed_at: user.modifiedAt,
+      email: user.email,
+      modified_at: user.modifiedAt,
       name: user.name,
       telephones: user.telephones,
     };
