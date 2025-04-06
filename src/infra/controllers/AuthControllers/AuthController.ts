@@ -26,8 +26,8 @@ export class AuthCntroller {
     private readonly getUserUseCase: GetUserUseCase,
   ) {}
 
-  @Post('singUp')
-  async singUp(
+  @Post('signUp')
+  async signUp(
     @Body() createUserDto: CreateUserDto,
   ): Promise<CreateUserResponse> {
     const userData = await this.createUserUseCase.execute(createUserDto);
@@ -38,7 +38,7 @@ export class AuthCntroller {
     };
   }
 
-  @Post('Sign')
+  @Post('signIn')
   @HttpCode(HttpStatus.OK)
   async signIn(@Body() createUserDto: SignDto): Promise<LoginDataDto> {
     const loginData = await this.loginUseCase.Sign(createUserDto);

@@ -1,7 +1,7 @@
 @apiUrl = http://localhost:3000
 @token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhYnJpZWxlbWFpbDQzMjExQGdtYWlsLmNvbSIsImlkIjoiZTZjNjY4YWItNDJkNi00YTgzLTk2NTMtZTgzNjIxZmRmMTgyIiwiaWF0IjoxNzQzOTUyNDcyLCJleHAiOjE3NDQwMzg4NzJ9.gH3NtzWOwOdQ4hL4Pgkv5Dvtd_F9jwIAE6izPN3UeKM
 
-POST  {{apiUrl}}/auth/singUp
+POST  {{apiUrl}}/auth/signUp
 Content-Type: application/json
 
 
@@ -17,7 +17,7 @@ Content-Type: application/json
  ]
 }
 ###
-POST  {{apiUrl}}/auth/Sign
+POST  {{apiUrl}}/auth/signIn
 Content-Type: application/json
 
 {
