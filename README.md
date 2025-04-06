@@ -1,73 +1,136 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 🔐 Backend - API de Autenticação com NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto é uma API RESTful construída com **NestJS** e **TypeScript**, que implementa autenticação com **JWT stateless**, persistência de dados, criptografia de senhas, validação de entrada e boas práticas de status codes HTTP.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📚 Tecnologias Utilizadas
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- NestJS
+- TypeScript
+- JWT
+- Bcrypt (hash de senha)
+- Class Validator
+- Prisma
+- ESLint
+- Jest (testes unitários)
 
-## Installation
+---
 
+## ☁️ Deploy
+
+Link do deploy 
+https://back-end-test-ruk.onrender.com
+
+## 📦 Instalação
+
+Crie um arquivo .env com as variáveis:
 ```bash
-$ pnpm install
+DATABASE_URL=postgresql://usuario:senha@host:porta/database
+JWT_KEY=seusegredoseguro
+PORT=3000
 ```
 
-## Running the app
-
 ```bash
-# development
-$ pnpm run start
+git clone https://github.com/seu-usuario/nome-do-repo.git
+cd nome-do-repo
 
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+npm install
+```
+Execute as migrações
+```bash
+npx prisma migrate dev
+```
+Inicie a aplicação:
+```bash
+npm run dev
 ```
 
-## Test
+
+## 📚 Endpoints
+
+📌 Registro de Usuário - POST /signup
+Body
 
 ```bash
-# unit tests
-$ pnpm run test
+{
+  "name": "string",
+  "email": "string",
+  "password": "string",
+  "telephones": [
+    {
+      "number": "number",
+      "area_code": "number"
+    }
+  ]
+}
+```
+Resultado
 
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+```bash
+{
+  "id": "uuid",
+  "created_at": "2025-04-05T12:34:56.000Z",
+  "modified_at": "2025-04-05T12:34:56.000Z"
+}
 ```
 
-## Support
+## 🔑 Login de Usuário - POST /signin
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Body
+```bash
+{
+  "email": "string",
+  "password": "string"
+}
+```
+Resultado
+```bash
+ 
+ {
+  "token": "jwt_token",
+ }
+```
 
-## Stay in touch
+## 👤 Buscar Usuário - GET /user
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Header
 
-## License
+```bash
+Authorization: Bearer <token>
+```
+Resultado
 
-Nest is [MIT licensed](LICENSE).
+```bash
+{
+  "id": "uuid",
+  "email": "string",
+  "name": "string",
+  "telephones": [
+    {
+      "number": "number",
+      "area_code": "number"
+    }
+  ],
+  "created_at": "2025-04-05T12:34:56.000Z",
+  "modified_at": "2025-04-05T12:34:56.000Z"
+}
+```
+
+## 🔒 Segurança
+Criptografia de senha com bcrypt
+
+Autenticação stateless com JWT
+
+Proteção de rotas privadas com guards
+
+Validação com class-validator
+
+## 🧪 Testes
+Para executar os testes unitários:
+
+``` bash
+npm run test
+```
+
+
