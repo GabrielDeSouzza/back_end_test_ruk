@@ -1,6 +1,10 @@
 import { UserRepository } from 'domain/Repositories/UserRepository';
 import { GetUserDto } from 'domain/Entities/User/Dto/GetUserDto';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 
 @Injectable()
 export class GetUserUseCase {
@@ -9,7 +13,7 @@ export class GetUserUseCase {
     if (Object.keys(request).length === 0)
       throw new BadRequestException('É NESSSARIO ENVIAR OS DADOS DE PESQUISA');
     const user = await this.userRepository.getUser(request);
-    if (!user) throw new BadRequestException('Usuario Não Encontrado');
+    if (!user) throw new NotFoundException('Usuario Não Encontrado');
 
     return user;
   }

@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+} from '@nestjs/common';
 import { EncryptionUtils } from 'app/Utils/EncryptionUtils';
 import { CreateUserDto } from 'app/UseCases/UserUseCase/Dto/CreateUserDto';
 import { UserEntity } from 'domain/Entities/User/UserEntity';
@@ -17,7 +21,7 @@ export class CreateUserUseCase {
     });
 
     if (emailInUse) {
-      throw new BadRequestException(`O EMAIL ${user.email} já esta em uso`);
+      throw new ConflictException(`O EMAIL ${user.email} já esta em uso`);
     }
     const userEntity = new UserEntity({
       createdAt: new Date(),
