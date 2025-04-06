@@ -49,7 +49,6 @@ export class AuthCntroller {
   @UseGuards(AuthGuard)
   async profile(@Request() req): Promise<GetUserControllerResponseDto> {
     const user = await this.getUserUseCase.execute(req.user);
-    console.log(user);
     return {
       created_at: user.createdAt,
       id: user.id,
