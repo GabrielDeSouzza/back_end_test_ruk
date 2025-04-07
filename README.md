@@ -50,6 +50,7 @@ npm run dev
 ## 📚 Endpoints
 
 📌 Registro de Usuário - POST /auth/signUp
+
 Body
 
 ```bash
@@ -75,7 +76,7 @@ Resultado
 }
 ```
 
-## 🔑 Login de Usuário - POST /auth//signIn
+## 🔑 Login de Usuário - POST /auth/signIn
 
 Body
 ```bash
